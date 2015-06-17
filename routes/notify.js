@@ -11,11 +11,7 @@ router.post('/notify', function(req, res, next) {
         res.send(400);
     }
 
-    console.log(p);
-
-    global.io.on('connection', function(socket){
-        socket.emit(p.event, p.params);
-    });
+    global.io.emit(p.event, p.params);
 
     res.send(p);
 });
